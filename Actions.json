@@ -1,0 +1,8 @@
+{
+	"Control": [
+		{"Name":"spongebob",
+		"Desc":"I'm Spongebob!",
+		"Params": [{"Name":"","Param":"Bool"}]
+		}
+	]
+}

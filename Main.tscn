@@ -1,0 +1,287 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Themes/minimal/distortionator_theme.tres" type="Theme" id=1]
+[ext_resource path="res://FileTree.gd" type="Script" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://ActionTree.gd" type="Script" id=4]
+[ext_resource path="res://WindowDialog.gd" type="Script" id=5]
+[ext_resource path="res://fonts/Motherish-Regular.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/Icons/bin_closed.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Icons/add.png" type="Texture" id=8]
+[ext_resource path="res://ActionDialog.gd" type="Script" id=9]
+[ext_resource path="res://fonts/Motherish-Medium.otf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="InputEventAction" id=2]
+action = "ui_left"
+pressed = true
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[sub_resource type="InputEventAction" id=4]
+action = "ui_right"
+pressed = true
+
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 10 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MenuBar" type="HBoxContainer" parent="Panel"]
+anchor_right = 1.0
+margin_left = 6.0
+margin_top = 4.0
+margin_bottom = 33.0
+
+[node name="File" type="MenuButton" parent="Panel/MenuBar"]
+margin_right = 30.0
+margin_bottom = 29.0
+text = "File"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
+
+[node name="Script" type="MenuButton" parent="Panel/MenuBar"]
+visible = false
+margin_left = 38.0
+margin_right = 88.0
+margin_bottom = 40.0
+focus_mode = 2
+text = "Script"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
+
+[node name="Actions" type="MenuButton" parent="Panel/MenuBar"]
+margin_left = 34.0
+margin_right = 90.0
+margin_bottom = 29.0
+focus_mode = 2
+text = "Actions"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
+
+[node name="FileTree" type="Tree" parent="Panel"]
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_top = 42.0
+margin_right = 269.0
+margin_bottom = -15.0
+input_pass_on_modal_close_click = false
+hide_root = true
+script = ExtResource( 2 )
+
+[node name="ActionTree" type="Tree" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 300.0
+margin_top = 42.0
+margin_right = -20.0
+margin_bottom = -103.0
+columns = 2
+hide_root = true
+script = ExtResource( 4 )
+
+[node name="Token" type="Label" parent="Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 300.0
+margin_top = -95.0
+margin_right = 398.0
+margin_bottom = -62.0
+custom_fonts/font = SubResource( 1 )
+text = "Token -"
+
+[node name="Button" type="Button" parent="Panel/Token"]
+margin_left = 114.0
+margin_right = 287.0
+margin_bottom = 29.0
+text = "[EMPTY]"
+
+[node name="Page" type="Label" parent="Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -306.0
+margin_top = -95.0
+margin_right = -208.0
+margin_bottom = -62.0
+custom_fonts/font = SubResource( 1 )
+text = "Page -"
+
+[node name="prev" type="Button" parent="Panel/Page"]
+margin_left = 94.0
+margin_right = 126.0
+margin_bottom = 29.0
+shortcut = SubResource( 3 )
+text = "<"
+
+[node name="next" type="Button" parent="Panel/Page"]
+margin_left = 205.0
+margin_right = 237.0
+margin_bottom = 29.0
+shortcut = SubResource( 5 )
+text = ">"
+
+[node name="add" type="Button" parent="Panel/Page"]
+margin_left = 255.0
+margin_right = 287.0
+margin_bottom = 29.0
+text = "+"
+
+[node name="count" type="Label" parent="Panel/Page"]
+margin_left = 137.0
+margin_top = 8.0
+margin_right = 193.0
+margin_bottom = 25.0
+text = "1/1"
+align = 1
+
+[node name="AddAction" type="Button" parent="Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -199.0
+margin_top = -45.0
+margin_right = -18.0
+margin_bottom = -16.0
+text = "Add Action"
+icon = ExtResource( 8 )
+align = 0
+
+[node name="RemoveAction" type="Button" parent="Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -394.0
+margin_top = -45.0
+margin_right = -213.0
+margin_bottom = -16.0
+text = "Remove Action"
+icon = ExtResource( 7 )
+align = 0
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+visible = true
+margin_left = 227.0
+margin_top = 160.0
+margin_right = 949.0
+margin_bottom = 429.0
+rect_min_size = Vector2( 218, 162 )
+resizable = true
+script = ExtResource( 5 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowDialog"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -49.0
+margin_right = -12.0
+margin_bottom = -10.0
+alignment = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Cancel" type="Button" parent="WindowDialog/HBoxContainer"]
+margin_right = 96.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 96, 0 )
+text = "Cancel"
+
+[node name="Ok" type="Button" parent="WindowDialog/HBoxContainer"]
+margin_left = 100.0
+margin_right = 196.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 96, 0 )
+text = "OK"
+
+[node name="Panel" type="Panel" parent="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 22.0
+margin_right = -12.0
+margin_bottom = -56.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog/Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -698.0
+margin_top = -188.0
+margin_right = -6.0
+margin_bottom = -2.0
+
+[node name="Title" type="Label" parent="WindowDialog/Panel/VBoxContainer"]
+margin_right = 692.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 6 )
+text = " NAME"
+
+[node name="Desc" type="Label" parent="WindowDialog/Panel/VBoxContainer"]
+margin_top = 29.0
+margin_right = 692.0
+margin_bottom = 46.0
+text = " DESC"
+
+[node name="Break" type="Label" parent="WindowDialog/Panel/VBoxContainer"]
+margin_top = 50.0
+margin_right = 692.0
+margin_bottom = 67.0
+
+[node name="Label" type="Label" parent="WindowDialog/Panel/VBoxContainer"]
+margin_top = 71.0
+margin_right = 692.0
+margin_bottom = 88.0
+text = "  "
+
+[node name="ActionDialog" type="WindowDialog" parent="."]
+margin_left = 177.0
+margin_top = 157.0
+margin_right = 887.0
+margin_bottom = 461.0
+window_title = "Add Action"
+script = ExtResource( 9 )
+
+[node name="TabContainer" type="TabContainer" parent="ActionDialog"]
+margin_left = 9.0
+margin_top = 3.0
+margin_right = 703.0
+margin_bottom = 262.0
+
+[node name="cancel" type="Button" parent="ActionDialog"]
+margin_left = 9.0
+margin_top = 264.0
+margin_right = 703.0
+margin_bottom = 299.0
+text = "Cancel"
+
+[connection signal="item_activated" from="Panel/FileTree" to="Panel/FileTree" method="_on_FileTree_item_activated"]
+[connection signal="item_activated" from="Panel/ActionTree" to="Panel/ActionTree" method="_on_ActionTree_item_activated"]
+[connection signal="pressed" from="Panel/Page/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Panel/Page/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Panel/Page/add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="Panel/AddAction" to="." method="_on_AddAction_pressed"]
+[connection signal="about_to_show" from="ActionDialog" to="ActionDialog" method="_on_ActionDialog_about_to_show"]
+[connection signal="pressed" from="ActionDialog/cancel" to="ActionDialog" method="_on_cancel_pressed"]

@@ -1,0 +1,12 @@
+[
+	{
+	"DialogueToken": "miscTokens",
+	"Letterbox": true,
+	"Lock Player": true,
+	"ShowBox": true,
+	"Text":"DEFAULT",
+	},
+	{
+	"i'm spongebob":true
+	}
+]
