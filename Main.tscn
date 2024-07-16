@@ -178,7 +178,7 @@ text = "Remove Action"
 icon = ExtResource( 7 )
 align = 0
 
-[node name="WindowDialog" type="WindowDialog" parent="."]
+[node name="ActionEdit" type="WindowDialog" parent="."]
 visible = true
 margin_left = 227.0
 margin_top = 160.0
@@ -188,7 +188,7 @@ rect_min_size = Vector2( 218, 162 )
 resizable = true
 script = ExtResource( 5 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="WindowDialog"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionEdit"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -202,20 +202,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Cancel" type="Button" parent="WindowDialog/HBoxContainer"]
+[node name="Cancel" type="Button" parent="ActionEdit/HBoxContainer"]
 margin_right = 96.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 96, 0 )
 text = "Cancel"
 
-[node name="Ok" type="Button" parent="WindowDialog/HBoxContainer"]
+[node name="Ok" type="Button" parent="ActionEdit/HBoxContainer"]
 margin_left = 100.0
 margin_right = 196.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 96, 0 )
 text = "OK"
 
-[node name="Panel" type="Panel" parent="WindowDialog"]
+[node name="Panel" type="Panel" parent="ActionEdit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 12.0
@@ -223,38 +223,67 @@ margin_top = 22.0
 margin_right = -12.0
 margin_bottom = -56.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog/Panel"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -698.0
-margin_top = -188.0
-margin_right = -6.0
-margin_bottom = -2.0
+[node name="ScrollContainer" type="ScrollContainer" parent="ActionEdit/Panel"]
+margin_right = 698.0
+margin_bottom = 191.0
 
-[node name="Title" type="Label" parent="WindowDialog/Panel/VBoxContainer"]
-margin_right = 692.0
+[node name="VBoxContainer" type="VBoxContainer" parent="ActionEdit/Panel/ScrollContainer"]
+margin_right = 698.0
+margin_bottom = 133.0
+rect_min_size = Vector2( 698, 0 )
+
+[node name="Title" type="Label" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer"]
+margin_right = 698.0
 margin_bottom = 25.0
 custom_fonts/font = SubResource( 6 )
 text = " NAME"
 
-[node name="Desc" type="Label" parent="WindowDialog/Panel/VBoxContainer"]
+[node name="Desc" type="Label" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer"]
 margin_top = 29.0
-margin_right = 692.0
+margin_right = 698.0
 margin_bottom = 46.0
 text = " DESC"
 
-[node name="Break" type="Label" parent="WindowDialog/Panel/VBoxContainer"]
+[node name="Break" type="Label" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer"]
 margin_top = 50.0
-margin_right = 692.0
+margin_right = 698.0
 margin_bottom = 67.0
 
-[node name="Label" type="Label" parent="WindowDialog/Panel/VBoxContainer"]
+[node name="CheckButton" type="HBoxContainer" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer"]
 margin_top = 71.0
-margin_right = 692.0
-margin_bottom = 88.0
-text = "  "
+margin_right = 698.0
+margin_bottom = 100.0
+
+[node name="Desc2" type="Label" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer/CheckButton"]
+margin_top = 6.0
+margin_right = 160.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 160, 0 )
+text = "Loop -"
+align = 2
+
+[node name="CheckBox" type="CheckBox" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer/CheckButton"]
+margin_left = 164.0
+margin_right = 188.0
+margin_bottom = 29.0
+
+[node name="CheckButton2" type="HBoxContainer" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 698.0
+margin_bottom = 133.0
+
+[node name="Desc2" type="Label" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer/CheckButton2"]
+margin_top = 6.0
+margin_right = 160.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 160, 0 )
+text = "BACKGROUND -"
+align = 2
+
+[node name="CheckBox" type="CheckBox" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer/CheckButton2"]
+margin_left = 164.0
+margin_right = 188.0
+margin_bottom = 29.0
 
 [node name="ActionDialog" type="WindowDialog" parent="."]
 margin_left = 177.0
@@ -283,5 +312,7 @@ text = "Cancel"
 [connection signal="pressed" from="Panel/Page/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="Panel/Page/add" to="." method="_on_add_pressed"]
 [connection signal="pressed" from="Panel/AddAction" to="." method="_on_AddAction_pressed"]
+[connection signal="popup_hide" from="ActionEdit" to="ActionEdit" method="_on_ActionEdit_popup_hide"]
+[connection signal="pressed" from="ActionEdit/HBoxContainer/Cancel" to="ActionEdit" method="_on_Cancel_pressed"]
 [connection signal="about_to_show" from="ActionDialog" to="ActionDialog" method="_on_ActionDialog_about_to_show"]
 [connection signal="pressed" from="ActionDialog/cancel" to="ActionDialog" method="_on_cancel_pressed"]

@@ -1,8 +1,23 @@
 {
 	"Control": [
 		{"Name":"spongebob",
+		"jsonName":"sponge",
 		"Desc":"I'm Spongebob!",
-		"Params": [{"Name":"","Param":"Bool"}]
+		"Params": [{"Name":"","jsonName":"e","Params":"Bool"}]
+		},
+		{
+		"Name": "Set BGM",
+		"jsonName": "bgm",
+		"Params": [
+			{"name": "Loop", "jsonName": "loop", "param": "Bool"},
+			{"name": "Volume", "jsonName": "volume", "param": "Int"}
+		]
 		}
-	]
+	],
+	"f	uck": [
+		{"Name":"john",
+		"Desc":"I'm Spongebob!",
+		"Params": [{"Name":"","jsonName":"s","Params":"Bool"}]
+		}
+	],
 }

@@ -6,7 +6,6 @@ var page = 0
 var pageCount = 0
 var token = ""
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,7 +13,7 @@ var token = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 func init_dialogue_page(path,dir=false): #run this everytime we create/load dialogue 
 	if !dir:

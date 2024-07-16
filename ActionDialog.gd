@@ -11,10 +11,12 @@ func _ready():
 	pass # Replace with function body.
 
 func generate_actions(json:Dictionary):
+	for i in $TabContainer.get_children():
+		i.queue_free()
+	
 	for i in json.size():
 		var tabNode = Tabs.new()
 		tabNode.name = json.keys()[i]
-		var tabReal = tabNode
 		var gridNode = GridContainer.new()
 		gridNode.columns = 2
 		var grid = gridNode
@@ -31,12 +33,14 @@ func generate_actions(json:Dictionary):
 			buttsNode.rect_min_size.x = 340
 			buttsNode.rect_min_size.y = 30
 			var realButts = buttsNode
+			realButts.connect("pressed", self, "_on_button_pressed", [realButts])
+
 			grid.add_child(realButts)
 		
 		realScroll.add_child(grid)
-		tabReal.add_child(realScroll)
+		tabNode.add_child(realScroll)
 		
-		$TabContainer.add_child(tabReal)
+		$TabContainer.add_child(tabNode)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,3 +54,10 @@ func _on_cancel_pressed():
 
 func _on_ActionDialog_about_to_show():
 	generate_actions(get_parent().get_json_file("res://Actions.json"))
+
+
+func _on_button_pressed(button):
+	print(button.text)
+	get_parent().get_node("ActionEdit").edit = false
+	get_parent().get_node("ActionEdit").popup_centered()
+	self.hide()
