@@ -229,7 +229,7 @@ margin_bottom = 191.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ActionEdit/Panel/ScrollContainer"]
 margin_right = 698.0
-margin_bottom = 133.0
+margin_bottom = 67.0
 rect_min_size = Vector2( 698, 0 )
 
 [node name="Title" type="Label" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer"]
@@ -248,42 +248,6 @@ text = " DESC"
 margin_top = 50.0
 margin_right = 698.0
 margin_bottom = 67.0
-
-[node name="CheckButton" type="HBoxContainer" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 71.0
-margin_right = 698.0
-margin_bottom = 100.0
-
-[node name="Desc2" type="Label" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer/CheckButton"]
-margin_top = 6.0
-margin_right = 160.0
-margin_bottom = 23.0
-rect_min_size = Vector2( 160, 0 )
-text = "Loop -"
-align = 2
-
-[node name="CheckBox" type="CheckBox" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer/CheckButton"]
-margin_left = 164.0
-margin_right = 188.0
-margin_bottom = 29.0
-
-[node name="CheckButton2" type="HBoxContainer" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 104.0
-margin_right = 698.0
-margin_bottom = 133.0
-
-[node name="Desc2" type="Label" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer/CheckButton2"]
-margin_top = 6.0
-margin_right = 160.0
-margin_bottom = 23.0
-rect_min_size = Vector2( 160, 0 )
-text = "BACKGROUND -"
-align = 2
-
-[node name="CheckBox" type="CheckBox" parent="ActionEdit/Panel/ScrollContainer/VBoxContainer/CheckButton2"]
-margin_left = 164.0
-margin_right = 188.0
-margin_bottom = 29.0
 
 [node name="ActionDialog" type="WindowDialog" parent="."]
 margin_left = 177.0
@@ -314,5 +278,7 @@ text = "Cancel"
 [connection signal="pressed" from="Panel/AddAction" to="." method="_on_AddAction_pressed"]
 [connection signal="popup_hide" from="ActionEdit" to="ActionEdit" method="_on_ActionEdit_popup_hide"]
 [connection signal="pressed" from="ActionEdit/HBoxContainer/Cancel" to="ActionEdit" method="_on_Cancel_pressed"]
+[connection signal="pressed" from="ActionEdit/HBoxContainer/Ok" to="ActionEdit" method="_on_Ok_pressed"]
 [connection signal="about_to_show" from="ActionDialog" to="ActionDialog" method="_on_ActionDialog_about_to_show"]
+[connection signal="tab_changed" from="ActionDialog/TabContainer" to="ActionDialog" method="_on_TabContainer_tab_changed"]
 [connection signal="pressed" from="ActionDialog/cancel" to="ActionDialog" method="_on_cancel_pressed"]

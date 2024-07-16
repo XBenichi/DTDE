@@ -3,14 +3,21 @@
 		{"Name":"spongebob",
 		"jsonName":"sponge",
 		"Desc":"I'm Spongebob!",
-		"Params": [{"Name":"","jsonName":"e","Params":"Bool"}]
+		"Params": [{"Name":"","jsonName":"","Params":"Bool"}]
 		},
 		{
 		"Name": "Set BGM",
 		"jsonName": "bgm",
 		"Params": [
-			{"name": "Loop", "jsonName": "loop", "param": "Bool"},
-			{"name": "Volume", "jsonName": "volume", "param": "Int"}
+			{"Name": "Loop", "jsonName": "loop", "Params": "Bool"},
+			{"Name": "Volume", "jsonName": "volume", "Params": "Int"}
+		]
+		},
+		{
+		"Name": "18+",
+		"jsonName": "adultsOnly",
+		"Params": [
+			{"Name": "", "jsonName": "", "Params": "Bool"}
 		]
 		}
 	],

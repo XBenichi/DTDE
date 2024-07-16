@@ -31,7 +31,7 @@ func _populate_tree(tree_item, path, is_root = false):
 					folder_item.set_icon(0, load("res://Assets/Icons/folder.png"))
 					_populate_tree(folder_item, filePath)
 				elif fileName.ends_with(".json"):
-					if fileName != "Action.json":
+					if fileName != "Actions.json":
 						var file_item = create_item(tree_item)
 						file_item.set_text(0, fileName)
 						file_item.set_icon(0, load("res://Assets/Icons/page_white_text.png"))

@@ -13,7 +13,10 @@ var token = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	currentJson = [{}]
+	pageCount = currentJson.size()-1
+	
+	page = 0
 
 func init_dialogue_page(path,dir=false): #run this everytime we create/load dialogue 
 	if !dir:

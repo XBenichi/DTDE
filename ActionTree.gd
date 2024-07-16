@@ -18,8 +18,19 @@ func update_tree(data: Dictionary):
 	
 	for key in data.keys():
 		if key != "DialogueToken":
-			var keyNode = create_item() 
-			keyNode.set_text(0, key)  
+			var keyNode = create_item()
+			var displayName = key
+			var actionsList = get_parent().get_parent().get_node("ActionDialog").actionsList
+			for i in actionsList:
+				for j in actionsList[i]:
+					if j.has("jsonName"):
+						if j.jsonName == key:
+							displayName = j.Name
+							break
+				
+			
+			
+			keyNode.set_text(0, displayName)  
 			
 			var value = str(data[key])
 			keyNode.set_text(1, wrap_string_with_spaces(value,80))
@@ -41,4 +52,5 @@ func wrap_string_with_spaces(ogString: String, totalLength: int) -> String:
 
 func _on_ActionTree_item_activated():
 	var item = get_selected()
-	get_parent().get_parent().get_node("WindowDialog").popup_centered()
+	get_parent().get_parent().get_node("ActionEdit").popup_centered()
+	get_parent().get_parent().get_node("ActionEdit").edit = true
